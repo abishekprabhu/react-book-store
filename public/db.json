@@ -1,0 +1,11 @@
+{
+  "products": [],
+  "users": [
+    {
+      "name": "abishek",
+      "email": "abis@gmail.com",
+      "password": "23432",
+      "id": "9954"
+    }
+  ]
+}
