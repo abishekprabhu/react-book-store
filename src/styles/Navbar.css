@@ -7,7 +7,9 @@
 
 .nav-link-hover:hover,
 .nav-link-hover.active {
-  color: #0d6efd !important;
+  /* color: #0d6efd !important; */
+  color: #ffffff !important;
+  /* text-decoration: none; */
 }
 
 .nav-link-hover::after {
@@ -17,7 +19,7 @@
   left: 25%;
   width: 50%;
   height: 2px;
-  background-color: #0d6efd;
+  background-color: #ffffff;
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
@@ -38,7 +40,7 @@
 }
 
 .brand-hover:hover strong {
-  color: #0d6efd !important;
+  color: #ffffff !important;
 }
 .brand-hover strong {
   color: #000;
@@ -53,3 +55,36 @@
   top: 0;
   z-index: 1000;
 }
+
+.bg-gradient-info {
+  background-color: #36b9cc;
+  background-image: linear-gradient(180deg, #36b9cc 50%, #258391 100%);
+  background-size: cover;
+}
+
+.bg-gradient-danger {
+  /* background-color: #e74a3b; */
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(231, 74, 59, 1) 0%,
+    rgba(231, 74, 59, 1) 100%
+  );
+  background-size: cover;
+}
+
+/* .bg-gradient-danger { */
+/* background-color: #858796;
+    background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);
+    background-size: cover; */
+/* background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(33, 33, 125, 1) 20%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background-size: cover;
+  color: #ffffff;
+} */

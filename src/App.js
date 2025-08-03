@@ -19,7 +19,7 @@ function App() {
       {/* ✅ Wrap your App in CartProvider */}
       <div className="container-fluid py-2 px-0">
         <Navbar />
-        <div className="container mt-4 p-4">
+        <div className="container mt-4 p-4 shadow rounded bg-light">
           <Routes>
             <Route path="/" element={<Home />} />
 

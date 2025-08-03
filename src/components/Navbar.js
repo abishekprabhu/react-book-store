@@ -7,7 +7,7 @@ import { useCart } from "../context/CartContext";
 const Navbar = () => {
   const { cartCount } = useCart();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 px-4 nav-container rounded shadow">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light py-4 px-4 nav-container rounded shadow bg-gradient-info">
       <NavLink
         className="navbar-brand d-flex align-items-center gap-2 brand-hover"
         to="/"

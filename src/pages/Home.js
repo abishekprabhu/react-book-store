@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <div className="text-center">
-        <h1 className="text-secondary fs-4">Welcome to E-Book Store</h1>
+        <h1 className="text-secondary fs-24 ">Welcome to E-Book Store</h1>
       </div>
 
       <ImageCarousel />

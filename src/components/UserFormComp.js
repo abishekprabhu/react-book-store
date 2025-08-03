@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { asset } from "../assets/asset";
 
 const BASE_URL = "http://localhost:8080/users";
 
@@ -72,30 +73,42 @@ const UserFormComp = () => {
         {/* Form */}
         <div className="col-md-4">
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Name Field */}
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input
                 type="text"
                 className={`form-control ${errors.name ? "is-invalid" : ""}`}
-                {...register("name", { required: "Name is required" })}
+                {...register("name", {
+                  required: "Name is required",
+                  minLength: { value: 6, message: "Min 6 characters" },
+                })}
               />
               {errors.name && (
                 <div className="invalid-feedback">{errors.name.message}</div>
               )}
             </div>
 
+            {/* Email Field */}
             <div className="mb-3">
               <label className="form-label">Email</label>
               <input
                 type="email"
                 className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                {...register("email", { required: "Email is required" })}
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+\.\S+$/,
+                    message: "Invalid email format",
+                  },
+                })}
               />
               {errors.email && (
                 <div className="invalid-feedback">{errors.email.message}</div>
               )}
             </div>
 
+            {/* Password Field with Eye Icon */}
             <div className="mb-3 position-relative">
               <label className="form-label">Password</label>
               <input
@@ -103,15 +116,26 @@ const UserFormComp = () => {
                 className={`form-control ${
                   errors.password ? "is-invalid" : ""
                 }`}
-                {...register("password", { required: "Password is required" })}
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                })}
               />
-              <button
-                type="button"
+              <i
+                className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
                 onClick={() => setShowPassword(!showPassword)}
-                className="btn btn-sm btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2"
-              >
-                {showPassword ? "Hide" : "Show"}
-              </button>
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  right: "15px",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              ></i>
               {errors.password && (
                 <div className="invalid-feedback">
                   {errors.password.message}
@@ -119,6 +143,7 @@ const UserFormComp = () => {
               )}
             </div>
 
+            {/* Submit Button */}
             <button type="submit" className="btn btn-primary">
               {editingId ? "Update User" : "Add User"}
             </button>
@@ -150,15 +175,15 @@ const UserFormComp = () => {
                   <td>
                     <button
                       onClick={() => handleEdit(user)}
-                      className="btn btn-warning btn-sm me-2"
+                      className="btn btn-sm me-2"
                     >
-                      Edit
+                      <img src={asset.edit_icon} alt="Edit" width={20} />
                     </button>
                     <button
                       onClick={() => handleDelete(user.id)}
-                      className="btn btn-danger btn-sm"
+                      className="btn btn-sm"
                     >
-                      Delete
+                      <img src={asset.delete_icon} alt="Delete" width={20} />
                     </button>
                   </td>
                 </tr>
