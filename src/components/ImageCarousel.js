@@ -40,7 +40,7 @@ const ImageCarousel = () => {
               src={item.src}
               alt={item.alt}
               className="d-block mx-auto"
-              style={{ width: "900px", height: "400px", objectFit: "cover" }}
+              style={{ width: "1300px", height: "400px", objectFit: "cover" }}
             />
             <Carousel.Caption>
               <h2 className="text-dark bg-light">{item.caption}</h2>

@@ -19,6 +19,8 @@ const UserFormComp = () => {
   const [editingId, setEditingId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const fetchUsers = async () => {
     try {
       const response = await axios.get(BASE_URL);
@@ -63,8 +65,24 @@ const UserFormComp = () => {
     }
   };
 
+  const filteredUser = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
+    <>
     <div className="container">
+      <div className="col-md-4">
+        <input
+          type = "text"
+          placeholder="Search by name or email..."
+          className="form-control"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <h2 className="text-center mb-4">
         {editingId ? "Edit User" : "Add User"}
       </h2>
@@ -167,7 +185,7 @@ const UserFormComp = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {filteredUser.map((user) => (
                 <tr key={user.id}>
                   <td>
                     <Link
@@ -199,6 +217,7 @@ const UserFormComp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

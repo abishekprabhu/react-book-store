@@ -1,8 +1,9 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
 
   const totalCost = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -20,7 +21,15 @@ const handleDecrease = (item) => {
 
 
 const handleIncrease = (item) => {
+  if(item.quantity < item.stock){
   updateQuantity(item.id, 1);
+  toast.success(`item is added`)
+  }else{
+    toast.error(`Only ${item.stock} item(s) in stock`,{
+      position: "top-right",
+      autoClose:3000
+    })
+  }
 };
 
 
@@ -79,10 +88,13 @@ const handleIncrease = (item) => {
                         <button
                           className="btn btn-sm btn-outline-secondary"
                           onClick={() => handleIncrease(item)}
+                          disabled={item.quantity >= item.stock}
+                          title={item.quantity >= item.stock ? " Stock limit reached " : ""} 
                         >
                           <i className="fas fa-plus"></i>
                         </button>
                       </div>
+                      <small className="text-muted mt-1">In Stock: {item.stock}</small>
                     </td>
                     <td>₹{(item.price * item.quantity).toFixed(2)}</td>
                     <td>

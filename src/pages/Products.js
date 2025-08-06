@@ -13,6 +13,9 @@ const Products = () => {
 
   const { addToCart } = useCart();
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+
   useEffect(() => {
     axios
       // .get("https://fakestoreapi.com/products")
@@ -23,7 +26,7 @@ const Products = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
+  // const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePrevious = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -33,10 +36,24 @@ const Products = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
+  const filteredProducts = products.filter((product) => 
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+
   return (
     <>
+    <div>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Search by title"
+        value={searchTerm}
+        onChange={(e)=> setSearchTerm(e.target.value)}
+      />
+    </div>
       <div className="row min-vh-90">
-        {currentProducts.map((product) => (
+        {filteredProducts.slice(startIndex, startIndex+itemsPerPage).map((product) => (
           <div className="col-md-4 mb-4 p-3 " key={product.id}>
             <div className="card h-100">
               <img
@@ -45,17 +62,40 @@ const Products = () => {
                 className="card-img-top p-3"
                 style={{ height: "250px", objectFit: "contain" }}
               />
+              {product.stock === 0 && (
+              <span className="badge bg-danger position-absolute top-0 end-0 m-2">
+                Out of Stock
+              </span>
+            )}
+
               <div className="card-body d-flex flex-column">
                 <h6 className="card-title">{product.title}</h6>
                 <p className="card-text fw-bold">${product.price}</p>
+                <p className={`fw-semibold ${product.stock === 0 ? "text-danger" : "text-success"}`}>
+                  {product.stock > 0 ? `In Stock : ${product.stock}` : "Out of Stock"}
+                </p>
                 <div className="mt-auto card-footer d-flex justify-content-evenly align-items-center">                  
-                <button
+                {/* <button
                   className="btn btn-success btn-sm"
                   onClick={() => addToCart(product)}
+                  disabled = {product.stock === 0}
                   style={{ height: "30px" }}
                 >
                     Add to Cart
-                  </button>
+                  </button> */}
+                  <button
+                  className="btn btn-success btn-sm"
+                  
+                  disabled={product.stock === 0}
+                  style={{ height: "30px", cursor: product.stock === 0 ? "not-allowed" : "pointer" }}
+                  title={product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+                  onClick={() => {
+                    if (product.stock > 0) addToCart(product);
+                  }}
+                >
+                  Add to Cart
+                </button>
+
                   <NavLink
                     to={`/products/${product.id}`}
                     className="btn btn-primary btn-sm"

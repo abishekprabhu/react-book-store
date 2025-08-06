@@ -18,14 +18,14 @@ const ProductDetail = () => {
   //   }
   // }
 
-  useEffect(() => {
+  useEffect(() =>  {
     // fetchProducts();
     axios
-      .get(`https://fakestoreapi.com/products/${id}`)
+      .get(`${BASE_URL}/${id}`)
       // .get(BASE_URL+`/${id}`)
       .then((res) => setProduct(res.data))
       .catch((err) => console.error("Error loading product:", err));
-  }, []);
+  }, [id]);
 
   if (!product) return <p>Loading...</p>;
 

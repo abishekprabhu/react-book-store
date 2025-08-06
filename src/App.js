@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import { CartProvider } from "./context/CartContext"; 
 import NotFound from "./pages/NotFound";
+import { ToastContainer } from "react-toastify";
 
 
 const LazyProductPage = React.lazy(() => import("./pages/Products"));
@@ -20,6 +21,7 @@ function App() {
       <div className="container-fluid py-2 px-0">
         <Navbar />
         <div className="container mt-4 p-4 shadow rounded bg-light">
+          <ToastContainer position="top-right" autoClose={3000}/>
           <Routes>
             <Route path="/" element={<Home />} />
 
