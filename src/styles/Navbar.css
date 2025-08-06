@@ -1,4 +1,5 @@
 /* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Michroma&display=swap');
 
 .nav-link-hover {
   transition: all 0.2s ease-in-out;
@@ -46,7 +47,7 @@
   color: #000;
 }
 
-.nav-container {
+/* .nav-container {
   padding: 0px;
   margin: 0px;
   background-color: #f8f9fa;
@@ -54,7 +55,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-}
+} */
 
 .bg-gradient-info {
   background-color: #36b9cc;
@@ -88,3 +89,12 @@
   background-size: cover;
   color: #ffffff;
 } */
+
+.caveat  {
+  font-family: "Caveat", cursive;
+}
+
+.michroma-regular {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+}

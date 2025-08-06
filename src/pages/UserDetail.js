@@ -17,7 +17,7 @@ const UserDetail = () => {
 
   return (
     <div className="container mt-4">
-      <div className="mt-4 p-4 border bg-light rounded">
+      <div className="mt-4 p-4 border bg-light rounded shadow">
         <h4>User Details</h4>
         <p>
           <strong>ID:</strong> {user.id}

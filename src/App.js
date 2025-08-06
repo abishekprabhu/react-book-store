@@ -6,17 +6,17 @@ import { Route, Routes } from "react-router-dom";
 import UserDetail from "./pages/UserDetail";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import ProductDetail from "./pages/ProductDetail"; // If separate detail page exists
-import { CartProvider } from "./context/CartContext"; // ✅ Import CartProvider
+import ProductDetail from "./pages/ProductDetail";
+import { CartProvider } from "./context/CartContext"; 
+import NotFound from "./pages/NotFound";
 
-// Lazy load Products page
+
 const LazyProductPage = React.lazy(() => import("./pages/Products"));
 
 function App() {
   return (
     <CartProvider>
-      {" "}
-      {/* ✅ Wrap your App in CartProvider */}
+      {/* {" "} */}
       <div className="container-fluid py-2 px-0">
         <Navbar />
         <div className="container mt-4 p-4 shadow rounded bg-light">
@@ -43,20 +43,15 @@ function App() {
                 </Suspense>
               }
             />
-
-            {/* ✅ Product Detail Route */}
+            
             <Route path="/products/:id" element={<ProductDetail />} />
 
-            {/* ✅ Cart Route */}
             <Route path="/cart" element={<Cart />} />
 
-            {/* Fallback Route */}
             <Route
               path="*"
               element={
-                <div className="text-center mt-5">
-                  <h1 className="text-danger">Page Not Found</h1>
-                </div>
+                  <NotFound/>
               }
             />
           </Routes>

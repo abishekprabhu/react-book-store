@@ -73,15 +73,19 @@ const UserFormComp = () => {
         {/* Form */}
         <div className="col-md-4">
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Name Field */}
+            {/* Name */}
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input
                 type="text"
+                placeholder="Enter the name...."
                 className={`form-control ${errors.name ? "is-invalid" : ""}`}
                 {...register("name", {
                   required: "Name is required",
-                  minLength: { value: 6, message: "Min 6 characters" },
+                                pattern: {
+                value: /^[a-zA-Z\s]{5,15}$/,
+                message: "Username must be 5 to 15 characters long"
+              }
                 })}
               />
               {errors.name && (
@@ -89,11 +93,12 @@ const UserFormComp = () => {
               )}
             </div>
 
-            {/* Email Field */}
+            {/* Email */}
             <div className="mb-3">
               <label className="form-label">Email</label>
               <input
                 type="email"
+                placeholder="Enter the email..."
                 className={`form-control ${errors.email ? "is-invalid" : ""}`}
                 {...register("email", {
                   required: "Email is required",
@@ -108,11 +113,12 @@ const UserFormComp = () => {
               )}
             </div>
 
-            {/* Password Field with Eye Icon */}
+            {/* PASSWORD */}
             <div className="mb-3 position-relative">
               <label className="form-label">Password</label>
               <input
                 type={showPassword ? "text" : "password"}
+                placeholder="Enter the password..."
                 className={`form-control ${
                   errors.password ? "is-invalid" : ""
                 }`}
@@ -129,9 +135,9 @@ const UserFormComp = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
-                  top: "50%",
-                  right: "15px",
-                  transform: "translateY(-50%)",
+                  top: "80%",
+                  right: "10px",
+                  transform: "translateY(-80%)",
                   cursor: "pointer",
                   color: "#888",
                 }}

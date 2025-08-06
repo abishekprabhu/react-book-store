@@ -1,13 +1,16 @@
 import React from "react";
 import { asset } from "../assets/asset";
 import { NavLink } from "react-router-dom";
-import "../styles/Navbar.css"; // Include the CSS from below
+import "../styles/Navbar.css"; 
+import "../App.css";
 import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
-  const { cartCount } = useCart();
+  const { cartItems } = useCart();
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light py-4 px-4 nav-container rounded shadow bg-gradient-info">
+    <nav className="navbar navbar-expand-lg navbar-light py-4 px-4 nav-container-top rounded shadow bg-info ">
       <NavLink
         className="navbar-brand d-flex align-items-center gap-2 brand-hover"
         to="/"
@@ -19,7 +22,7 @@ const Navbar = () => {
           height="30"
           className="d-inline-block align-top"
         />
-        <strong className="fs-4 text-dark">E-Book Store</strong>
+        <strong className="fs-4 text-dark michroma-regular">E-BOOK STORE</strong>
       </NavLink>
 
       <button
@@ -97,7 +100,8 @@ const Navbar = () => {
               <div>
                 <img src={asset.cart_icon} alt="Cart" width="18" />
                 <span className="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
-                  {cartCount > 0 ? cartCount : "0"}
+                  {/* {cartItems.length} */}
+                  {totalQuantity}
                 </span>
               </div>
               <span>CART</span>

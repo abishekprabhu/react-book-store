@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { asset } from "../assets/asset";
 
+const BASE_URL = "http://localhost:8080/products";
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,12 +15,12 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products")
+      // .get("https://fakestoreapi.com/products")
+      .get(BASE_URL)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Failed to fetch products", err));
   }, []);
 
-  // Pagination logic
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
@@ -46,13 +48,12 @@ const Products = () => {
               <div className="card-body d-flex flex-column">
                 <h6 className="card-title">{product.title}</h6>
                 <p className="card-text fw-bold">${product.price}</p>
-                <div className="mt-auto card-footer d-flex justify-content-evenly align-items-center">
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={addToCart}
-                    width={90}
-                    style={{ height: "30px" }}
-                  >
+                <div className="mt-auto card-footer d-flex justify-content-evenly align-items-center">                  
+                <button
+                  className="btn btn-success btn-sm"
+                  onClick={() => addToCart(product)}
+                  style={{ height: "30px" }}
+                >
                     Add to Cart
                   </button>
                   <NavLink
@@ -70,7 +71,6 @@ const Products = () => {
         ))}
       </div>
 
-      {/* Pagination Controls */}
       <div className="d-flex justify-content-center align-items-center mt-4">
         <button
           className="btn btn-outline-secondary me-2"

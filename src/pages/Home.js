@@ -1,6 +1,7 @@
 import React from "react";
 import ImageCarousel from "../components/ImageCarousel";
 import { asset } from "../assets/asset";
+import '../styles/Navbar.css';
 
 const Home = () => {
   const card_items = [
@@ -27,7 +28,7 @@ const Home = () => {
   return (
     <>
       <div className="text-center">
-        <h1 className="text-secondary fs-24 ">Welcome to E-Book Store</h1>
+        <h1 className="text-secondary fs-24 caveat">Welcome to E-Book Store</h1>
       </div>
 
       <ImageCarousel />
