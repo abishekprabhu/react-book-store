@@ -47,7 +47,7 @@
   color: #000;
 }
 
-/* .nav-container {
+.nav-container {
   padding: 0px;
   margin: 0px;
   background-color: #f8f9fa;
@@ -55,7 +55,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-} */
+}
 
 .bg-gradient-info {
   background-color: #36b9cc;

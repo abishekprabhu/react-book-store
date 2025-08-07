@@ -3,10 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { asset } from "../assets/asset";
+import '../styles/Search.css'
 
 const BASE_URL = "http://localhost:8080/users";
 
-const UserFormComp = () => {
+  const UserFormComp = () => {
   const {
     register,
     handleSubmit,
@@ -74,7 +75,7 @@ const UserFormComp = () => {
   return (
     <>
     <div className="container">
-      <div className="col-md-4">
+      {/* <div className="col-md-4">
         <input
           type = "text"
           placeholder="Search by name or email..."
@@ -82,14 +83,38 @@ const UserFormComp = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      </div>
+
+      </div> */}
+        <div class="row justify-content-center py-3">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="search-container position-relative">
+                    <form class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="search-icon feather feather-search">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                          <input
+                          // type = "text"
+                          placeholder="Search by name or email..."
+                          class="form-control search-input ps-5" type="search"
+                          aria-label="Search"
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+                        <button class="btn btn-primary ms-2 rounded-pill hover shadow" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
       <h2 className="text-center mb-4">
         {editingId ? "Edit User" : "Add User"}
       </h2>
 
       <div className="row">
         {/* Form */}
-        <div className="col-md-4">
+        <div className="col-md-4 form-container">
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* Name */}
             <div className="mb-3">

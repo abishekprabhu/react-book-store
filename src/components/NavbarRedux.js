@@ -4,18 +4,13 @@ import { NavLink } from "react-router-dom";
 import "../styles/Navbar.css"; 
 import "../App.css";
 import { useSelector } from "react-redux";
-// import { useCart } from "../context/CartContext";
 
-const Navbar = () => {
-  
-  // const { cartItems } = useCart();
-
-  //Redux
-   const cartItems = useSelector((state) => state.cart.cartItems);
+const NavbarRedux = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light py-4 px-4 nav-container rounded shadow bg-info ">
+    <nav className="navbar navbar-expand-lg navbar-light py-4 px-4 nav-container rounded shadow bg-info">
       <NavLink
         className="navbar-brand d-flex align-items-center gap-2 brand-hover"
         to="/"
@@ -42,10 +37,7 @@ const Navbar = () => {
         <span className="navbar-toggler-icon" />
       </button>
 
-      <div
-        className="collapse navbar-collapse justify-content-end"
-        id="navbarNav"
-      >
+      <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="navbar-nav gap-4 align-items-center">
           {/* HOME */}
           <li className="nav-item">
@@ -104,11 +96,11 @@ const Navbar = () => {
             >
               <div>
                 <img src={asset.cart_icon} alt="Cart" width="18" />
-                {/* {totalQuantity > 0 && ( */}
+                {totalQuantity > 0 && (
                   <span className="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
                     {totalQuantity}
                   </span>
-                {/* )} */}
+                )}
               </div>
               <span>CART</span>
             </NavLink>
@@ -119,4 +111,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarRedux;

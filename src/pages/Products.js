@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { asset } from "../assets/asset";
+import '../styles/Search.css';
 
 const BASE_URL = "http://localhost:8080/products";
 
@@ -43,15 +44,31 @@ const Products = () => {
 
   return (
     <>
-    <div>
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Search by title"
-        value={searchTerm}
-        onChange={(e)=> setSearchTerm(e.target.value)}
-      />
-    </div>
+            <div class="row justify-content-center py-3">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="search-container position-relative">
+                    <form class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="search-icon feather feather-search">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        {/* <input class = "form-control search-input ps-5" type="search"
+                               placeholder="Search anything..." aria-label="Search"> */}
+                        <input
+                          class="form-control search-input ps-5"
+                          type="text"
+                          aria-label="Search"
+                          placeholder="Search by title"
+                          value={searchTerm}
+                          onChange={(e)=> setSearchTerm(e.target.value)}
+                            />
+                        <button class="btn btn-primary ms-2 rounded-pill hover shadow" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
       <div className="row min-vh-90">
         {filteredProducts.slice(startIndex, startIndex+itemsPerPage).map((product) => (
           <div className="col-md-4 mb-4 p-3 " key={product.id}>
