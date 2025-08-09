@@ -34,7 +34,7 @@ const CartRedux = () => {
       ) : (
         <>
           <table className="table table-bordered">
-            <thead>
+            <thead className="table-info ">
               <tr>
                 <th>Image</th>
                 <th>Title</th>
@@ -83,8 +83,8 @@ const CartRedux = () => {
               ))}
             </tbody>
           </table>
-          <div className="text-end mt-3 bg-dark text-secondary">
-            <h4>TOTAL COST : <strong className="text-light"> ₹{totalCost.toFixed(2)}</strong></h4>
+          <div className="text-end mt-3 bg-dark text-light">
+            <h4>TOTAL COST : <strong className="text-info"> ₹{totalCost.toFixed(2)}</strong></h4>
           </div>
         </>
       )}

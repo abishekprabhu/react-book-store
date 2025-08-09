@@ -54,7 +54,7 @@ const handleIncrease = (item) => {
         <>
           <div className="table-responsive">
             <table className="table table-bordered table-hover align-middle">
-              <thead className="table-info">
+              <thead className="table-info ">
                 <tr>
                   <th>Image</th>
                   <th>Title</th>

@@ -19,6 +19,9 @@ const BASE_URL = "http://localhost:8080/users";
   const [users, setUsers] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -66,11 +69,22 @@ const BASE_URL = "http://localhost:8080/users";
     }
   };
 
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+
   const filteredUser = users.filter(
     (user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+    const handlePrevious = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <>
@@ -210,7 +224,7 @@ const BASE_URL = "http://localhost:8080/users";
               </tr>
             </thead>
             <tbody>
-              {filteredUser.map((user) => (
+              {filteredUser.slice(startIndex, startIndex+itemsPerPage).map((user) => (
                 <tr key={user.id}>
                   <td>
                     <Link
@@ -240,6 +254,25 @@ const BASE_URL = "http://localhost:8080/users";
             </tbody>
           </table>
         </div>
+              <div className="d-flex justify-content-center align-items-center mt-4">
+                <button
+                  className="btn btn-outline-secondary me-2"
+                  onClick={handlePrevious}
+                  disabled={currentPage === 1}
+                >
+                  <img src={asset.backward_icon} alt="Backward" width={20} />
+                </button>
+                <span className="mx-2">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  className="btn btn-outline-secondary ms-2"
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                >
+                  <img src={asset.forward_icon} alt="Next" width={20} />
+                </button>
+              </div>
       </div>
     </div>
     </>

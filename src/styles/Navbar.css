@@ -12,6 +12,35 @@
   color: #ffffff !important;
   /* text-decoration: none; */
 }
+.topBar {
+    /* height: 65px; */
+    transform: translate(0px, -8px);
+    width: 100%;
+    opacity: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 5px, 10px);
+    padding: 0px 0px 20px;
+    margin: 0px auto;
+    background: rgb(228, 0, 70);
+    overflow: visible !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.downBar {
+    /* height: 65px; */
+    transform: translate(0px, 10px);
+    width: 100%;
+    opacity: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 5px, 10px);
+    padding: 0px 0px 20px;
+    margin: 0px auto;
+    background: rgb(228, 0, 70);
+    overflow: visible !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
 .nav-link-hover::after {
   content: "";

@@ -3,6 +3,7 @@ import { asset } from "../assets/asset";
 import { NavLink } from "react-router-dom";
 import "../styles/Navbar.css"; 
 import "../App.css";
+import "../styles/Search.css";
 import { useSelector } from "react-redux";
 // import { useCart } from "../context/CartContext";
 
@@ -10,14 +11,14 @@ const Navbar = () => {
   
   // const { cartItems } = useCart();
 
-  //Redux
-   const cartItems = useSelector((state) => state.cart.cartItems);
+  //Reduxs
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light py-4 px-4 nav-container rounded shadow bg-info ">
+    <nav className="navbar navbar-expand-lg navbar-light py-4 px-4 m-0 topBar rounded shadow  ">
       <NavLink
-        className="navbar-brand d-flex align-items-center gap-2 brand-hover"
+        className="navbar-brand d-flex align-items-center gap-2 brand-hover "
         to="/"
       >
         <img
@@ -105,7 +106,7 @@ const Navbar = () => {
               <div>
                 <img src={asset.cart_icon} alt="Cart" width="18" />
                 {/* {totalQuantity > 0 && ( */}
-                  <span className="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+                  <span className="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-dark">
                     {totalQuantity}
                   </span>
                 {/* )} */}

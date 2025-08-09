@@ -11,6 +11,7 @@ import { CartProvider } from "./context/CartContext";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import CartRedux from "./pages/CartRedux";
+import Footer from "./components/Footer";
 // import NavbarRedux from "./components/NavbarRedux";
 
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <CartProvider>
       {/* {" "} */}
-      <div className="container-fluid py-2 px-0">
+      <div className="container-fluid py-2 px-0 bg-light">
         <Navbar />
         {/* <NavbarRedux/> */}
         <div className="container mt-4 p-4 shadow rounded bg-light">
@@ -63,6 +64,7 @@ function App() {
             />
           </Routes>
         </div>
+        <Footer/>
       </div>
     </CartProvider>
   );

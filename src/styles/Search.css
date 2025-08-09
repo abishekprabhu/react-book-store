@@ -1,4 +1,19 @@
-    .form-container{
+   
+.topBar {
+    /* height: 65px; */
+    transform: translate(0px, 0px);
+    width: 100%;
+    opacity: 1;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px;
+    padding: 0px 0px 20px;
+    margin: 0px auto;
+    background: rgb(228, 0, 70);
+    overflow: visible !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+   .form-container{
         background-color: white;
         border-radius: 10px;
         box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
