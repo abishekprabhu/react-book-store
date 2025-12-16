@@ -89,35 +89,34 @@ const BASE_URL = "http://localhost:8080/users";
   return (
     <>
     <div className="container">
-      {/* <div className="col-md-4">
-        <input
-          type = "text"
-          placeholder="Search by name or email..."
-          className="form-control"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-      </div> */}
-        <div class="row justify-content-center py-3">
-            <div class="col-12 col-md-8 col-lg-6">
-                <div class="search-container position-relative">
-                    <form class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="search-icon feather feather-search">
+        <div className="row justify-content-center py-3">
+            <div className="col-12 col-md-8 col-lg-6">
+                <div className="search-container position-relative">
+                    <form className="d-flex align-items-center" onSubmit={(e) => e.preventDefault()}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="search-icon feather feather-search"
+                      >
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                           <input
                           // type = "text"
                           placeholder="Search by name or email..."
-                          class="form-control search-input ps-5" type="search"
+                          className="form-control search-input ps-5" type="search"
                           aria-label="Search"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
         />
-                        <button class="btn btn-primary ms-2 rounded-pill hover shadow" type="submit">Search</button>
+                        <button className="btn btn-primary ms-2 rounded-pill hover shadow" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -192,11 +191,12 @@ const BASE_URL = "http://localhost:8080/users";
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
-                  top: "80%",
+                  top: errors.password ? "60%" : "80%",
                   right: "10px",
                   transform: "translateY(-80%)",
                   cursor: "pointer",
                   color: "#888",
+                  transition: "top 0.3s ease",
                 }}
               ></i>
               {errors.password && (

@@ -33,18 +33,6 @@ const handleIncrease = (item) => {
 };
 
 
-
-  // const decreaseQuantity = (item) => {
-  //   if (item.quantity > 1) {
-  //     // Reduce quantity by 1
-  //     const updatedItem = { ...item, quantity: item.quantity - 1 };
-  //     removeFromCart(item.id); // Remove current
-  //     addToCart(updatedItem);  // Add updated
-  //   } else {
-  //     removeFromCart(item.id); // Remove if quantity is 1
-  //   }
-  // };
-
   return (
     <div className="container">
       <h2 className="mb-4">Your Cart</h2>

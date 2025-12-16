@@ -53,7 +53,7 @@ const addToCart = (product) => {
       item.id === id
         ? {
             ...item,
-            quantity: Math.max(1, item.quantity + change), // Prevent going below 1
+            quantity: Math.max(1, item.quantity + change),
           }
         : item
     )

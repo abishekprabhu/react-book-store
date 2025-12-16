@@ -12,19 +12,20 @@ import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import CartRedux from "./pages/CartRedux";
 import Footer from "./components/Footer";
-// import NavbarRedux from "./components/NavbarRedux";
-
+import Register from "./auth/pages/Register";
+import CustomerLogin from "./auth/pages/Login";
+import { AuthProvider } from "./auth/context/authContext";
 
 // const LazyProductPage = React.lazy(() => import("./pages/Products"));
 const LazyProductPage = React.lazy(() => import("./pages/ProductRedux"));
 
 function App() {
   return (
+    <AuthProvider>
     <CartProvider>
       {/* {" "} */}
       <div className="container-fluid py-2 px-0 bg-light">
         <Navbar />
-        {/* <NavbarRedux/> */}
         <div className="container mt-4 p-4 shadow rounded bg-light">
           <ToastContainer position="top-right" autoClose={3000}/>
           <Routes>
@@ -62,11 +63,20 @@ function App() {
                   <NotFound/>
               }
             />
+            <Route
+              path="/register"
+              element={<Register/>}
+            />
+            <Route
+              path="/login"
+              element={<CustomerLogin/>}
+            />
           </Routes>
         </div>
         <Footer/>
       </div>
     </CartProvider>
+    </AuthProvider>
   );
 }
 

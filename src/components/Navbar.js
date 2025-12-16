@@ -11,7 +11,7 @@ const Navbar = () => {
   
   // const { cartItems } = useCart();
 
-  //Reduxs
+  //Redux
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
